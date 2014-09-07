@@ -12,12 +12,16 @@ public class Main {
             int totalTime = 0;
             int[] numbers = dealLine(line);
 
-            for (int i = 0; i < numbers.length; i++) {
-                if(i == 0){
-                    caculateIime(totalTime, 0, numbers[i + 1]);
+            if(numbers[0] == 0){
+                break;
+            }
+
+            for (int i = 1; i < numbers.length ; i++) {
+                if(i == 1){
+                    totalTime += caculateTime(0, numbers[i]);
                 }
                 else {
-                    caculateIime(totalTime, numbers[i], numbers[i + 1]);
+                    totalTime += caculateTime(numbers[i - 1], numbers[i]);
                 }
             }
 
@@ -37,14 +41,14 @@ public class Main {
         return ABn;
     }
 
-    static void caculateIime(int totalTime, int beforeFloor, int behindFloor){
+    static int caculateTime(int beforeFloor, int behindFloor){
+        int timeCost = 0;
         if(beforeFloor < behindFloor){
-            int timeCost = (behindFloor - beforeFloor) * 6 + 5;
-            totalTime += timeCost;
+            timeCost = (behindFloor - beforeFloor) * 6 + 5;
         }
         else{
-            int timeCost = (beforeFloor - behindFloor) * 4 + 5;
-            totalTime += timeCost;
+            timeCost = (beforeFloor - behindFloor) * 4 + 5;
         }
+        return timeCost;
     }
 }
