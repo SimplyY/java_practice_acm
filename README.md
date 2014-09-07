@@ -20,3 +20,5 @@ In java (string == string) **only when two string is one string(has same address
 In java,**string to int:**
 
 `int =Integer.parseInt(string);`
+
+3. 1008_elevate accepted:
